@@ -42,6 +42,6 @@ jobs:
         run: yarn test:prod
 
       - name: PUBLISH - Publish the packages to npm using GitHub Packages
-        run: npm publish
+        run: npm publish --@brandalley:registry=https://registry.npmjs.org/
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
