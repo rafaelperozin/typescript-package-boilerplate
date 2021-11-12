@@ -32,9 +32,6 @@ jobs:
       - name: FORMAT - Format the code to follow the prettier patterns
         run: yarn format
 
-      - name: PREBUILD - Clear the dist folder and auto import all the modules
-        run: yarn prebuild
-
       - name: BUILD - Build the bandle using tsc and rollup
         run: yarn build
 

@@ -3,3 +3,4 @@
  */
 
 export * from './modules/greeter/greeter.store';
+export * from './modules/greeter-bad/greeter-bad.store';
