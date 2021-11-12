@@ -27,21 +27,21 @@ jobs:
           scope: '@brandalley'
 
       - name: INSTALL - Install package.json dependencies with Yarn
-        run: yarn install
+        run: npm install
 
       - name: FORMAT - Format the code to follow the prettier patterns
-        run: yarn format
+        run: npm run format
 
       - name: PREBUILD - Clear the dist folder and auto import all the modules
-        run: yarn prebuild
+        run: npm run prebuild
 
       - name: BUILD - Build the bandle using tsc and rollup
-        run: yarn build
+        run: npm run build
 
       - name: TEST - Lint, test and depcheck
-        run: yarn test:prod
+        run: npm run test:prod
 
       - name: PUBLISH - Publish the packages to npm using GitHub Packages
-        run: yarn publish
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
