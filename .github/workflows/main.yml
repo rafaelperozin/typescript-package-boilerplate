@@ -32,6 +32,9 @@ jobs:
       - name: FORMAT - Format the code to follow the prettier patterns
         run: yarn format
 
+      - name: PREBUILD - Clear the dist folder and auto import all the modules
+        run: yarn prebuild
+
       - name: BUILD - Build the bandle using tsc and rollup
         run: yarn build
 
@@ -39,6 +42,6 @@ jobs:
         run: yarn test:prod
 
       - name: PUBLISH - Publish the packages to npm using GitHub Packages
-        run: npm publish --@brandalley:registry=https://registry.npmjs.org/
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
