@@ -16,14 +16,32 @@ jobs:
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: '@brandalley'
-      - run: npm install
-      - run: npm publish
+
+      - name: INSTALL - Install package.json dependencies with Yarn
+        run: yarn install
+
+      - name: FORMAT - Format the code to follow the prettier patterns
+        run: yarn format
+
+      - name: PREBUILD - Clear the dist folder and auto import all the modules
+        run: yarn prebuild
+
+      - name: BUILD - Build the bandle using tsc and rollup
+        run: yarn build
+
+      - name: TEST - Lint, test and depcheck
+        run: yarn test:prod
+
+      - name: PUBLISH - Publish the packages to npm using GitHub Packages
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
