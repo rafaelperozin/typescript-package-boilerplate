@@ -1,0 +1,13 @@
+ignores:
+  [
+    'eslint',
+    'prettier',
+    '@auto-it/*',
+    'auto',
+    '@types/node',
+    '@types/jest',
+    'class-transformer',
+    '@types/lodash',
+    'yalc',
+  ]
+skip-missing: true

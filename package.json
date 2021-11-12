@@ -1,0 +1,66 @@
+{
+  "name": "@brandalley/smk",
+  "version": "1.0.0",
+  "description": "State Management Kit",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "module": "dist/index.es5.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/brandalley/smk.git"
+  },
+  "author": "BrandAlley PWA Frontend Team",
+  "license": "ISC",
+  "scripts": {
+    "create-index": "barrelsby -c barrelsby.json",
+    "prebuild": "yarn create-index && rimraf dist",
+    "build": "tsc --module commonjs --project tsconfig.build.json && rollup -c rollup.config.js",
+    "start": "nodemon --ignore src/index.ts -e js,ts,tsx,json --watch src/ --exec yalc push",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
+    "test:prod": "yarn lint && yarn test --no-cache && yarn depcheck"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "yarn format",
+      "eslint . --fix",
+      "jest --bail —-findRelatedTests --passWithNoTests"
+    ],
+    "package.json": [
+      "depcheck ."
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "barrelsby": "^2.3.0",
+    "depcheck": "^1.4.2",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.2.4",
+    "jest": "^27.3.1",
+    "lint-staged": "^11.2.6",
+    "lodash.camelcase": "^4.3.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.60.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.7",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^9.0.0",
+    "typescript": "^4.4.4",
+    "yalc": "^1.0.0-pre.53"
+  }
+}

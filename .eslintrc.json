@@ -1,0 +1,59 @@
+{
+  "env": {
+    "browser": false,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "jest",
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "semi": 2,
+    "no-console": 0,
+    "@typescript-eslint/no-redeclare": 0,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/indent": ["error", 2, {
+      "ignoredNodes": [
+        "ArrowFunctionExpression > BlockStatement",
+        "NoSubstitutionTemplateLiteral",
+        "TemplateLiteral",
+        "TSTypeAliasDeclaration *",
+        "MethodDefinition > *",
+        "MemberExpression > CallExpression > *"
+      ]
+    }],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "settings": {
+    "import/internal-regex": "^src/"
+  }
+}
