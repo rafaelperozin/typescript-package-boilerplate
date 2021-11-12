@@ -43,5 +43,6 @@ jobs:
 
       - name: PUBLISH - Publish the packages to npm using GitHub Packages
         run: yarn publish
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
