@@ -18,18 +18,18 @@
   "license": "ISC",
   "scripts": {
     "create-index": "barrelsby -c barrelsby.json",
-    "prebuild": "yarn create-index && rimraf dist",
+    "prebuild": "npm run create-index && rimraf dist",
     "build": "tsc --module commonjs --project tsconfig.build.json && rollup -c rollup.config.js",
     "start": "nodemon --ignore src/index.ts -e js,ts,tsx,json --watch src/ --exec yalc push",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "test:prod": "yarn lint && yarn test --no-cache && yarn depcheck"
+    "test:prod": "npm run lint && npm run test --no-cache && npx run depcheck"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "yarn format",
+      "npm run format",
       "eslint . --fix",
       "jest --bail —-findRelatedTests --passWithNoTests"
     ],

@@ -6,3 +6,4 @@ coverage
 dist
 .yalc
 yalc.lock
+.env
