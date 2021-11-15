@@ -93,7 +93,7 @@ jobs:
       - run: 'echo: ${{ steps.previoustag.outputs }}'
 
       - name: 'RELEASE Latest Version'
-        uses: 'marvinpinto/action-automatic-releases@${{ steps.previoustag.outputs.tag }}'
+        uses: 'marvinpinto/action-automatic-releases@latest'
         with:
           repo_token: '${{ secrets.GITHUB_TOKEN }}'
           prerelease: false
