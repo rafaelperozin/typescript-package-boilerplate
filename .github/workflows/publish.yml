@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Publish the Package
 
 # Controls when the workflow will run
 on:
