@@ -31,15 +31,10 @@ jobs:
       #     SHAME_BODY="Hey @${{ github.actor }}! 👋\nThis PR seems to contain no description. Please add useful context, test instructions and/or any other information that will help the reviewers to test, review and approve it."
       #     curl -s -u posthog-bot:${{ secrets.GITHUB_TOKEN }} -X POST -d "{ \"body\": \"$SHAME_BODY\" }" "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments"
 
-      - name: Request changes if PR has no description
-        if: steps.is-shame-worthy.outputs.is-shame-worthy == 'true'
+      - name: Fail checks if PR has no description
         uses: actions/checkout@v1
+        if: steps.is-shame-worthy.outputs.is-shame-worthy == 'true'
         run: exit 1
 
       - name: Print message if we don't fail
         run: echo Should not get here
-
-        # uses: actions/github-script@v3
-        # with:
-        #   script: |
-        #     core.setFailed('This PR seems to contain no description. Please add useful context, test instructions and/or any other information that will help the reviewers to test, review and approve it.')
