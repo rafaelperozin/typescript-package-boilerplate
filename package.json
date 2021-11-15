@@ -1,6 +1,6 @@
 {
   "name": "@brandalley/smk",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "State Management Kit",
   "main": "dist/index.js",
   "publishConfig": {
