@@ -12,7 +12,7 @@ on:
 jobs:
   # Publish to GitHub Package Repository
   bump-version:
-    name: 'Bump Version (master branch)'
+    name: 'Bump Version (master)'
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -78,15 +78,22 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-          name: 'tagged-release'
-
   tagged-release:
     name: 'Release Package (latest)'
     needs: [publish-gpr]
     runs-on: 'ubuntu-latest'
 
     steps:
-      - uses: 'marvinpinto/action-automatic-releases@latest'
+      - name: 'GET Previous Tag (version)'
+        id: previoustag
+        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+        with:
+          tag-prefix: 'v'
+
+      - run: 'echo: ${{ steps.previoustag.outputs }}'
+
+      - name: 'RELEASE Latest Version'
+        uses: 'marvinpinto/action-automatic-releases@${{ steps.previoustag.outputs.tag }}'
         with:
           repo_token: '${{ secrets.GITHUB_TOKEN }}'
           prerelease: false
