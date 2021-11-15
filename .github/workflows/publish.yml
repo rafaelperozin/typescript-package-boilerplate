@@ -84,13 +84,11 @@ jobs:
     runs-on: 'ubuntu-latest'
 
     steps:
-      - name: 'GET Previous Tag (version)'
-        id: previoustag
+      - name: 'GET Latest Tag (version)'
+        id: latesttag
         uses: 'WyriHaximus/github-action-get-previous-tag@v1'
-        with:
-          tag-prefix: 'v'
 
-      - run: 'echo: ${{ steps.previoustag.outputs }}'
+      - run: 'echo: ${{ steps.latesttag.outputs }}'
 
       - name: 'RELEASE Latest Version'
         uses: 'marvinpinto/action-automatic-releases@latest'
