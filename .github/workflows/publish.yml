@@ -77,21 +77,3 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  tagged-release:
-    name: 'Release Package (latest)'
-    needs: [publish-gpr]
-    runs-on: 'ubuntu-latest'
-
-    steps:
-      - name: 'GET Latest Tag (version)'
-        id: latesttag
-        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
-
-      - run: 'echo: ${{ steps.latesttag.outputs }}'
-
-      - name: 'RELEASE Latest Version'
-        uses: 'marvinpinto/action-automatic-releases@latest'
-        with:
-          repo_token: '${{ secrets.GITHUB_TOKEN }}'
-          prerelease: false
