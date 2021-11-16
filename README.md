@@ -1,30 +1,30 @@
-# SMK - State Management Kit
+# Typescript Package.
 
-STACK: [Mobx-state-tree](https://mobx-state-tree.js.org/intro/welcome) | [Typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+After published on NPM or Github Packages you can just import the methods of this package into your project.
+
+STACK: [Typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 
 ## Usage
 
-To intall the @brandaley/smk in your project you just need to run a simple command.
+To intall the @your_account/package_name in your project you just need to run a simple command.
 
 ```shell
-yarn add git+ssh://git@github.com:brandalley/smk.git
+yarn add @your_account/package_name
 ```
 
-| ⚠️ **WARNING**: Always certify that you have the latest version released. |
-| ------------------------------------------------------------------------ |
 
 ## Instalation  
 
 1. Clone the repository.
 
     ```shell
-    git clone git@github.com:brandalley/smk.git ba-smk
+    git clone git@github.com:your_account/package_name.git
     ```
 
 2. Install the node module.
 
     ```shell
-    yarn install
+    yarn
     ```
 
 3. Run the packge and start working
