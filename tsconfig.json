@@ -10,6 +10,8 @@
     "allowJs": true,
     "sourceMap": true,
     "declaration": true,
+    "noUnusedLocals": true,
+		"noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,

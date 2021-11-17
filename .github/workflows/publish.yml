@@ -26,6 +26,8 @@ jobs:
       - name: 'cat package.json'
         run: cat ./package.json
 
+      - run: npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+
       - name: 'Automated Version Bump'
         id: version-bump
         uses: 'phips28/gh-action-bump-version@master'
@@ -74,6 +76,6 @@ jobs:
         run: npm run test:prod
 
       - name: PUBLISH - Publish the packages to npm using GitHub Packages
-        run: npm publish
+        run: npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}" && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
