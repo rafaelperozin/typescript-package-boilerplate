@@ -7,8 +7,12 @@ STACK: [Mobx-state-tree](https://mobx-state-tree.js.org/intro/welcome) | [Typesc
 To intall the @brandaley/smk in your project you just need to run a simple command.
 
 ```shell
-yarn add git+ssh://git@github.com:brandalley/smk.git
+yarn add @brandalley/smk
 ```
+
+After that just call the available stores:
+
+- Language: `LanguageStore`, `Language` interface and `AvailableLanguages` enum
 
 | ⚠️ **WARNING**: Always certify that you have the latest version released. |
 | ------------------------------------------------------------------------ |
