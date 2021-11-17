@@ -2,31 +2,35 @@
   "name": "@brandalley/smk",
   "version": "1.2.1",
   "description": "State Management Kit",
-  "main": "dist/index.js",
-  "typings": "index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@brandalley"
-  },
+  "keywords": [],
+  "license": "UNLICENSED",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es5.js",
   "files": [
     "dist"
   ],
-  "module": "dist/index.es5.js",
+  "author": "BrandAlley PWA Frontend Team <developer@brandalley.co.uk>",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@brandalley"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/brandalley/smk.git"
   },
-  "author": "BrandAlley PWA Frontend Team",
-  "license": "ISC",
   "scripts": {
     "create-index": "barrelsby -c barrelsby.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
     "prebuild": "npm run create-index && rimraf dist",
     "build": "tsc --module commonjs --project tsconfig.build.json && rollup -c rollup.config.js",
     "start": "nodemon --ignore src/index.ts -e js,ts,tsx,json --watch src/ --exec yalc push",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "test:prod": "npm run lint && npm run test --no-cache && npx depcheck"
+    "test:prod": "npm run lint && npm run test --no-cache && npx depcheck",
+    "depcheck": "depcheck"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -71,6 +75,7 @@
   "dependencies": {
     "i18n-js": "^3.8.0",
     "mobx": "^6.3.7",
-    "mobx-state-tree": "^5.0.5"
+    "mobx-state-tree": "^5.0.5",
+    "reflect-metadata": "^0.1.13"
   }
 }

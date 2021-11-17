@@ -11,6 +11,13 @@ const libraryName = 'index';
 
 export default {
   input: `src/index.ts`,
+  external: [
+    'axios',
+    'tslib',
+    'class-transformer',
+    'class-validator',
+    'mobx-state-tree',
+  ],
   output: [
     {
       file: pkg.main,
@@ -21,16 +28,7 @@ export default {
     { file: pkg.module, format: 'es', sourcemap: true },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: [
-    'axios',
-    'tslib',
-    'class-transformer',
-    'class-validator',
-    'mobx-state-tree',
-  ],
-  watch: {
-    include: 'src/**',
-  },
+  watch: { include: 'src/**' },
   plugins: [
     // Allow json resolution
     json(),
