@@ -3,7 +3,7 @@ name: Auto Publish
 # Controls when the workflow will run
 on:
   # The triggers of workflow
-  push:
+  create:
     # Where should trigger it. In our case, only on master branch.
     tag:
       - v*

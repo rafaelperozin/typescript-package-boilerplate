@@ -4,7 +4,7 @@ import {AvailableLanguages, Language} from './language.model';
 
 export const LanguageStore = types
 	.model('LanguageStore', {
-		languages: types.array(types.frozen<Language>()),
+		languages: types.frozen<Language[]>(),
 		currentLanguage: types.enumeration('Languages', Object.values(AvailableLanguages)),
 	})
 	.actions((self) => ({
