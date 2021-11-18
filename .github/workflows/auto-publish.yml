@@ -10,41 +10,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Publish to GitHub Package Repository
-  bump-version:
-    name: 'Bump Version (master)'
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: 'Checkout source code'
-        uses: 'actions/checkout@v2'
-        with:
-          ref: ${{ github.ref }}
-
-      - name: 'cat package.json'
-        run: cat ./package.json
-
-      - name: 'Automated Version Bump'
-        id: version-bump
-        uses: 'phips28/gh-action-bump-version@master'
-        with:
-          tag-prefix: 'v'
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: 'cat package.json'
-        run: cat ./package.json
-
-      - name: 'Output Step'
-        env:
-          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
-        run: echo "new tag $NEW_TAG"
-
   publish-gpr:
-    needs: [bump-version]
-    name: 'Publish the Package'
+    name: 'BUILD & PUBLISH the Package'
     runs-on: ubuntu-latest
 
     steps:
