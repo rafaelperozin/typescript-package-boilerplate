@@ -3,7 +3,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import camelCase from 'lodash.camelcase';
 import typescript from 'rollup-plugin-typescript2';
-import json from 'rollup-plugin-json';
+import json from '@rollup/plugin-json';
 
 const pkg = require('./package.json');
 
@@ -11,19 +11,16 @@ const libraryName = 'index';
 
 export default {
   input: `src/index.ts`,
-  external: [
-    'axios',
-    'tslib',
-    'class-transformer',
-    'class-validator',
-    'mobx-state-tree',
-  ],
+  external: ['tslib', 'mobx-state-tree'],
   output: [
     {
       file: pkg.main,
       name: camelCase(libraryName),
       format: 'umd',
       sourcemap: true,
+      globals: {
+        'mobx-state-tree': 'mobxStateTree',
+      },
     },
     { file: pkg.module, format: 'es', sourcemap: true },
   ],

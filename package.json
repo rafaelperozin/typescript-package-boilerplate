@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@types/i18n-js": "^3.8.2",
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
@@ -61,7 +62,6 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.60.0",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-typescript2": "^0.30.0",
