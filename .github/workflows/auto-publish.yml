@@ -1,4 +1,4 @@
-name: Bump & Publish
+name: Auto Publish
 
 # Controls when the workflow will run
 on:
