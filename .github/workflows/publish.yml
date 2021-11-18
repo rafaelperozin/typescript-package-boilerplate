@@ -1,10 +1,10 @@
-name: Only Publish
+name: Publish
 
 on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Only Publish'
+        description: 'Publish'
         required: true
         default: 'publish'
       tags:
@@ -26,7 +26,22 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@brandalley'
 
+      - name: INSTALL - Install package.json dependencies with Yarn
+        run: npm install
+
+      - name: FORMAT - Format the code to follow the prettier patterns
+        run: npm run format
+
+      - name: PREBUILD - Clear the dist folder and auto import all the modules
+        run: npm run prebuild
+
+      - name: BUILD - Build the bandle using tsc and rollup
+        run: npm run build
+
+      - name: TEST - Lint, test and depcheck
+        run: npm run test:prod
+
       - name: PUBLISH - Publish the packages to npm using GitHub Packages
-        run: npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}" && npm publish
+        run: npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}" && npm publish --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
