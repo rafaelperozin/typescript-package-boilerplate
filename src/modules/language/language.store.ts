@@ -6,7 +6,6 @@ export const LanguageStore = types
 	.model('LanguageStore', {
 		languages: types.frozen<Language[]>(),
 		currentLanguage: types.enumeration('Languages', Object.values(AvailableLanguages)),
-		pizza: types.maybe(types.string),
 	})
 	.actions((self) => ({
 		setCurrentLanguage: (languageCode: AvailableLanguages) => {
@@ -14,5 +13,6 @@ export const LanguageStore = types
 			self.currentLanguage = AvailableLanguages[languageCode];
 		},
 		setLanguages: (languesList: Language[]) => (self.languages = cast(languesList)),
-		setPizza: (value: string) => (self.pizza = value),
+		addLanguage: (newLanguage: Language) =>
+			(self.languages = cast([...self.languages, newLanguage])),
 	}));
