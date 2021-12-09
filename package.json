@@ -1,5 +1,5 @@
 {
-  "name": "@brandalley/smk",
+  "name": "@myrepo/smk",
   "version": "1.2.13",
   "description": "State Management Kit",
   "keywords": [],
@@ -10,16 +10,16 @@
   "files": [
     "dist"
   ],
-  "author": "BrandAlley PWA Frontend Team <developer@brandalley.co.uk>",
+  "author": "Rafael Perozin <rafaelperozin@outlook.com>",
   "engines": {
     "node": ">=6.0.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@brandalley"
+    "registry": "https://npm.pkg.github.com/@myrepo"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/brandalley/smk.git"
+    "url": "https://github.com/myrepo/smk.git"
   },
   "scripts": {
     "create-index": "barrelsby -c barrelsby.json",
